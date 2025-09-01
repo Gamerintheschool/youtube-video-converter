@@ -1,0 +1,80 @@
+{
+  "name": "YouTube Video Converter",
+  "description": "A modern web application for converting YouTube videos to MP3 and MP4 formats",
+  "keywords": ["youtube", "converter", "mp3", "mp4", "flask", "python"],
+  "website": "https://github.com/yourusername/youtube-converter",
+  "repository": "https://github.com/yourusername/youtube-converter",
+  "logo": "https://raw.githubusercontent.com/yourusername/youtube-converter/main/static/favicon.ico",
+  "success_url": "/",
+  "stack": "container",
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "env": {
+    "FLASK_ENV": {
+      "description": "Flask environment (production/development)",
+      "value": "production",
+      "required": true
+    },
+    "SECRET_KEY": {
+      "description": "Secret key for Flask sessions and security",
+      "generator": "secret",
+      "required": true
+    },
+    "RAPIDAPI_KEY": {
+      "description": "RapidAPI key for YouTube downloader service",
+      "required": true
+    },
+    "APPIFY_TOKEN": {
+      "description": "Apify token for YouTube scraping service",
+      "required": true
+    },
+    "DEBUG_MODE": {
+      "description": "Enable debug mode (True/False)",
+      "value": "False",
+      "required": false
+    },
+    "LOG_LEVEL": {
+      "description": "Logging level (DEBUG/INFO/WARNING/ERROR)",
+      "value": "INFO",
+      "required": false
+    },
+    "CORS_ORIGINS": {
+      "description": "Allowed CORS origins (comma-separated)",
+      "value": "*",
+      "required": false
+    },
+    "MAX_CONTENT_LENGTH": {
+      "description": "Maximum content length for uploads (in bytes)",
+      "value": "104857600",
+      "required": false
+    },
+    "WORKERS": {
+      "description": "Number of Gunicorn workers",
+      "value": "4",
+      "required": false
+    },
+    "TIMEOUT": {
+      "description": "Request timeout in seconds",
+      "value": "120",
+      "required": false
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-redis:mini",
+      "as": "REDIS"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "scripts": {
+    "postdeploy": "echo 'Deployment completed successfully!'"
+  }
+}

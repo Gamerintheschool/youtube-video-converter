@@ -1,0 +1,19 @@
+# Core Flask dependencies
+Flask==3.0.0
+Flask-CORS==4.0.0
+Werkzeug==3.0.1
+
+# HTTP requests
+requests==2.31.0
+
+# Production server
+gunicorn==21.2.0
+
+# Environment variables
+python-dotenv==1.0.0
+
+# Security
+cryptography==41.0.8
+
+# Logging and monitoring
+psutil==5.9.6

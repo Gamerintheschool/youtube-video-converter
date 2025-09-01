@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YouTube videolarını yüksek kalitede MP4 ve MP3 formatlarında online dönüştürün ve indirin. Hızlı, güvenli ve ücretsiz.">
+    <meta name="keywords" content="youtube, dönüştürücü, mp4, mp3, video, ses, indirme, online">
+    <meta name="author" content="YouTube Dönüştürücü">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="YouTube Dönüştürücü - MP4 & MP3">
+    <meta property="og:description" content="YouTube videolarını yüksek kalitede MP4 ve MP3 formatlarında online dönüştürün">
+    <meta property="og:type" content="website">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#ff0000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="YT Dönüştürücü">
+    
+    <title>YouTube Dönüştürücü - MP4 & MP3 | Online Video Dönüştürücü</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iI0ZGMDAwMCIvPgo8cGF0aCBkPSJNMjIuNSAxNkwyMC41IDE0LjVWMTcuNUwyMi41IDE2WiIgZmlsbD0id2hpdGUiLz4KPHA+
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-youtube"></i> YouTube Dönüştürücü</h1>
+            <p>YouTube videolarını yüksek kalitede MP4 ve MP3 formatlarında indirin</p>
+        </header>
+
+        <main>
+            <div class="converter-card">
+                <div class="input-section">
+                    <div class="url-input-container">
+                        <input type="url" id="videoUrl" placeholder="YouTube video URL'sini buraya yapıştırın..." required>
+                        <button type="button" id="pasteBtn" title="Panoya kopyalanan URL'yi yapıştır">
+                            <i class="fas fa-paste"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="format-selection">
+                    <h3>Format Seçin:</h3>
+                    <div class="format-options">
+                        <label class="format-option">
+                            <input type="radio" name="format" value="mp4" checked>
+                            <div class="option-card">
+                                <i class="fas fa-video"></i>
+                                <span>MP4 Video</span>
+                                <small>Yüksek kalite video</small>
+                            </div>
+                        </label>
+                        <label class="format-option">
+                            <input type="radio" name="format" value="mp3">
+                            <div class="option-card">
+                                <i class="fas fa-music"></i>
+                                <span>MP3 Ses</span>
+                                <small>Sadece ses dosyası</small>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="quality-selection">
+                    <h3>Kalite Seçin:</h3>
+                    <select id="qualitySelect">
+                        <option value="best">En İyi Kalite</option>
+                        <option value="1080p">1080p (Full HD)</option>
+                        <option value="720p">720p (HD)</option>
+                        <option value="480p">480p</option>
+                        <option value="360p">360p</option>
+                    </select>
+                </div>
+
+                <button type="button" id="downloadBtn" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    İndir
+                </button>
+
+                <div id="progressContainer" class="progress-container" style="display: none;">
+                    <div class="progress-bar">
+                        <div id="progressBar" class="progress-fill"></div>
+                    </div>
+                    <div id="progressText" class="progress-text">İndiriliyor...</div>
+                </div>
+
+                <div id="resultContainer" class="result-container" style="display: none;">
+                    <div class="result-success">
+                        <i class="fas fa-check-circle"></i>
+                        <span>İndirme tamamlandı!</span>
+                        <a id="downloadLink" href="#" download class="download-link">
+                            <i class="fas fa-download"></i> Dosyayı İndir
+                        </a>
+                    </div>
+                </div>
+
+                <div id="errorContainer" class="error-container" style="display: none;">
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span id="errorText">Bir hata oluştu!</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>Nasıl Kullanılır?</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>URL Kopyalayın</h4>
+                            <p>YouTube'dan indirmek istediğiniz videonun URL'sini kopyalayın</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Format Seçin</h4>
+                            <p>MP4 (video) veya MP3 (sadece ses) formatını seçin</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Kalite Belirleyin</h4>
+                            <p>İstediğiniz video/ses kalitesini seçin</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Online İndirin</h4>
+                            <p>İndir butonuna tıklayın - dosyanız bulutta işlenir ve indirme linki sağlanır</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="features">
+                    <h3>Özellikler</h3>
+                    <div class="feature-list">
+                        <div class="feature">
+                            <i class="fas fa-cloud"></i>
+                            <span>Bulut Tabanlı İşleme</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bolt"></i>
+                            <span>Hızlı Dönüştürme</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Güvenli ve Özel</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Mobil Uyumlu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 YouTube Dönüştürücü. Tüm hakları saklıdır.</p>
+            <p><small>Bu araç sadece kişisel kullanım içindir. Telif hakkı kurallarına uygun kullanın.</small></p>
+        </footer>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
